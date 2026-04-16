@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>English Music Game</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        background: #0f1220;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .wrap {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .card {
+        padding: 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      button {
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.92);
+        color: rgba(20, 20, 22, 0.92);
+        font-weight: 800;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div style="font-weight: 900; margin-bottom: 6px">English Music Game</div>
+        <div style="opacity: 0.85; font-size: 13px">这是一个占位子应用示例，用来测试浮窗与联动。</div>
+      </div>
+      <button id="btn">让姬娘鼓励我</button>
+    </div>
+    <script>
+      const btn = document.getElementById('btn')
+      btn.addEventListener('click', () => {
+        window.parent.postMessage(
+          {
+            type: 'assistantSay',
+            payload: {
+              text: '加油！跟着节奏来，我们一点点就会变强～',
+              mood: 'happy',
+              action: 'cheer',
+            },
+          },
+          '*',
+        )
+      })
+    </script>
+  </body>
+</html>
+

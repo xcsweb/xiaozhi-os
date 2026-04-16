@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Anti PUA</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        background: #121225;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .wrap {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .card {
+        padding: 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      button {
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.92);
+        color: rgba(20, 20, 22, 0.92);
+        font-weight: 800;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div style="font-weight: 900; margin-bottom: 6px">Anti PUA</div>
+        <div style="opacity: 0.85; font-size: 13px">占位子应用，用来测试上下文注入与联动。</div>
+      </div>
+      <button id="btn">开始反PUA演练</button>
+    </div>
+    <script>
+      const btn = document.getElementById('btn')
+      btn.addEventListener('click', () => {
+        window.parent.postMessage(
+          {
+            type: 'setContext',
+            payload: { mode: 'anti-pua-roleplay' },
+          },
+          '*',
+        )
+        window.parent.postMessage(
+          {
+            type: 'assistantSay',
+            payload: {
+              text: '好的，我们开始反PUA演练。把对方的话发给我，我来拆解。',
+              mood: 'neutral',
+              action: 'nod',
+            },
+          },
+          '*',
+        )
+      })
+    </script>
+  </body>
+</html>
+

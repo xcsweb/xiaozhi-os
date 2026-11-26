@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Two Eyes</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        background: #10131f;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .wrap {
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+      .card {
+        padding: 14px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      button {
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.92);
+        color: rgba(20, 20, 22, 0.92);
+        font-weight: 800;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <div style="font-weight: 900; margin-bottom: 6px">Two Eyes</div>
+        <div style="opacity: 0.85; font-size: 13px">占位子应用，用来测试 postMessage 联动。</div>
+      </div>
+      <button id="btn">提醒我休息一下</button>
+    </div>
+    <script>
+      const btn = document.getElementById('btn')
+      btn.addEventListener('click', () => {
+        window.parent.postMessage(
+          {
+            type: 'openChatPrompt',
+            payload: { text: '我有点眼睛酸，你提醒我休息一下，并点头。' },
+          },
+          '*',
+        )
+      })
+    </script>
+  </body>
+</html>
+
